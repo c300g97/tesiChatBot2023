@@ -1,0 +1,27 @@
+<div class="logout-container">
+  <button class="logout-button" (click)="logout()">Logout</button>
+</div>
+<div class="download-container">
+  <button class="download-button" (click)="downloadChatAsPdf()">
+    Download Chat
+  </button>
+</div>
+<div class="chat-container" #chatContainer>
+  <div
+    class="message"
+    *ngFor="let message of conversation"
+    [ngClass]="message.role + '-message'"
+  >
+    <p class="message-content">{{ message.role }}</p>
+    <p class="message-content">{{ message.content }}</p>
+  </div>
+
+  <div class="user-input-container">
+    <input
+      [(ngModel)]="userInput"
+      class="user-input"
+      placeholder="Type your message..."
+    />
+    <button (click)="sendMessage()" class="send-button">Send</button>
+  </div>
+</div>
